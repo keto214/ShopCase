@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 21, 2022 lúc 03:37 PM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 8.0.12
+-- Thời gian đã tạo: Th5 20, 2022 lúc 09:24 AM
+-- Phiên bản máy phục vụ: 10.4.20-MariaDB
+-- Phiên bản PHP: 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `shopcase`
 --
+CREATE DATABASE IF NOT EXISTS `shopcase` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `shopcase`;
 
 -- --------------------------------------------------------
 
@@ -94,6 +96,15 @@ CREATE TABLE `contact` (
   `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `phone`, `email`, `content`, `time`, `status`) VALUES
+(3, 'nhan', 'nhan', 'nhan', 'nhan', '2022-03-20 17:50:18', 0),
+(4, 'hung', 'hung', 'hung', 'hung', '2022-03-20 17:50:29', 0),
+(6, 'Nhan Do', '0383687458', 'dotrongnhan20112003@gmail.com', 'hihi', '2022-03-20 18:38:19', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -138,7 +149,13 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `session_id`, `name`, `phone`, `email`, `address`, `product_id`, `product_name`, `price`, `amount`, `total`, `thoigian`, `status`) VALUES
-(19, NULL, '8hvpis8o5jihu1csd1k5jl6v75', 'Hoàng Quân', '0702982792', 'hoangquanketo214@gmail.com', '351A, lạc long quân, phường 5, quận 11', 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 1, 150000, '2022-05-21 13:03:12', 0);
+(11, 1, NULL, 'Trọng Nhân', '0123456789', 'nhan@gmail.com', 'nhan@gmail.com', 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 1, 150000, '2022-03-18 10:28:28', 1),
+(12, NULL, '4i6fcbsa6hrke322beh63q5cvk', 'Đỗ Trọng Nhân', '0383687458', 'dotrongnhan20112003@gmail.com', 'Viet Nam', 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 5, 750000, '2022-03-20 07:06:10', 0),
+(14, NULL, '6jasfdrv9v3f138ilgphkanthm', 'Đỗ Trọng Nhân', '0383687458', 'dotrongnhan20112003@gmail.com', 'Viet Nam', 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 1, 150000, '2022-03-20 07:08:48', 0),
+(15, NULL, '4i6fcbsa6hrke322beh63q5cvk', 'Đỗ Trọng Nhân', '0383687458', 'dotrongnhan20112003@gmail.com', 'Viet Nam', 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 5, 750000, '2022-03-20 07:10:04', 0),
+(16, NULL, '4i6fcbsa6hrke322beh63q5cvk', 'Đỗ Trọng Nhân', '0383687458', 'dotrongnhan20112003@gmail.com', 'Viet Nam', 2, 'Ốp Lưng Điện Thoại In Tên TE-30', 150000, 1, 150000, '2022-03-20 07:11:42', 0),
+(17, NULL, '4i6fcbsa6hrke322beh63q5cvk', 'Đỗ Trọng Nhân', '0383687458', 'dotrongnhan20112003@gmail.com', 'Viet Nam', 3, 'Ốp Lưng Điện Thoại In Tên TE-31', 150000, 1, 150000, '2022-03-20 07:12:27', 0),
+(18, 15, NULL, 'tôi tên là nhân', '0123456789', 'tuilanhan@gmail.com', 'Mỹ Tho', 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 1, 150000, '2022-03-20 15:18:12', 0);
 
 -- --------------------------------------------------------
 
@@ -162,13 +179,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `id_category`, `product_name`, `price`, `image`, `description`, `view`, `status`) VALUES
-(1, 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-29.1-510x510.jpg', 'Tất cả dòng điện thoại', 23, 1),
-(2, 1, 'Ốp Lưng Điện Thoại In Tên TE-30', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-30.1-510x510.jpg', 'Tất cả dòng điện thoại', 14, 1),
-(3, 1, 'Ốp Lưng Điện Thoại In Tên TE-31', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-31.1-510x510.jpg', 'Tất cả dòng điện thoại', 6, 1),
+(1, 1, 'Ốp Lưng Điện Thoại In Tên TE-29', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-29.1-510x510.jpg', 'Tất cả dòng điện thoại', 21, 1),
+(2, 1, 'Ốp Lưng Điện Thoại In Tên TE-30', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-30.1-510x510.jpg', 'Tất cả dòng điện thoại', 13, 1),
+(3, 1, 'Ốp Lưng Điện Thoại In Tên TE-31', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-31.1-510x510.jpg', 'Tất cả dòng điện thoại', 5, 1),
 (4, 1, 'Ốp Lưng Điện Thoại In Tên TE-32', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-32.1-510x510.jpg', 'Tất cả dòng điện thoại', 0, 1),
 (5, 1, 'Ốp Lưng Điện Thoại In Tên TE-33', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-33.1-510x510.jpg', 'Tất cả dòng điện thoại', 0, 1),
 (6, 1, 'Ốp Lưng Điện Thoại In Tên TE-34', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-34.1-510x510.jpg', 'Tất cả dòng điện thoại', 0, 1),
-(7, 1, 'Ốp Lưng Điện Thoại In Tên TE-35', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-35.1-510x510.jpg', 'Tất cả dòng điện thoại', 5, 1),
+(7, 1, 'Ốp Lưng Điện Thoại In Tên TE-35', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-35.1-510x510.jpg', 'Tất cả dòng điện thoại', 4, 1),
 (8, 1, 'Ốp Lưng Điện Thoại In Tên TE-36', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-36.1-510x510.jpg', 'Tất cả dòng điện thoại', 1, 1),
 (9, 1, 'Ốp Lưng Điện Thoại In Tên TE-37', 150000, 'https://hatocase.com/wp-content/uploads/2021/03/op-lung-dien-thoai-in-ten-37.1-510x510.jpg', 'Tất cả dòng điện thoại', 0, 1),
 (10, 2, 'Ốp Lưng Cặp Đôi CO-01', 220000, 'https://hatocase.com/wp-content/uploads/2018/10/op-lung-couple_tuan-nhi-510x510.jpg', 'Tất cả dòng điện thoại', 0, 1),
@@ -225,8 +242,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `address`, `role`) VALUES
+(1, 'Trọng Nhân', 'nhan@gmail.com', '3a0beabd2bcd080ca5af12b9c664f9d1', '0123456789', 'Tiền Giang', 0),
 (2, 'admin', 'admin@gmail.com', '4297f44b13955235245b2497399d7a93', '0123456789', 'Việt Nam', 1),
-(17, 'Lương Hoàng Quân', 'hoangquanketo214@gmail.com', '7c6aa69949242c3c48d8271763c3d9dd', '0702982792', '351A, lạc long quân,p5, q11', 0);
+(7, 'Nhân nè', 'nhando@gmail.com', '1cd0d61fa037e47dfef664a75426603f', '0383687458', 'Viet Nam', 0),
+(12, 'Trọng Nhân', 'nhan15@gmail.com', '3a0beabd2bcd080ca5af12b9c664f9d1', '0123456789', 'Tiền Giang', 0),
+(15, 'tôi tên là nhân', 'tuilanhan@gmail.com', 'f5bb0c8de146c67b44babbf4e6584cc0', '0123456789', 'Mỹ Tho', 0),
+(16, '', '', '', '', '', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -288,7 +309,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -312,7 +333,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
@@ -330,7 +351,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

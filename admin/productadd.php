@@ -54,7 +54,7 @@
                         <label>Mô tả</label>
                     </td>
                     <td>
-                        <textarea name="pro_description" required rows="10" placeholder="Nhập mô tả sản phẩm...">Tất cả dòng điện thoại</textarea>
+                        <textarea name="pro_description" required rows="10" placeholder="Nhập mô tả sản phẩm..."></textarea>
                     </td>
                 </tr>
 				<tr>
@@ -71,7 +71,7 @@
                         <label>Chọn ảnh</label>
                     </td>
                     <td>
-                        <input id="image" type="text" class="medium" name="pro_image" placeholder="Nhập đường dẫn tới hình ảnh..." required onchange="previewFile()"/>
+                        <input id="image" type="text" class="medium" name="pro_image" placeholder="Nhập đường dẫn tới hình ảnh..." required onchange="previewFile()"/>  <input type="file" name="fileToUpload" id="fileToUpload">
                     </td>
                 </tr>
                 <tr>

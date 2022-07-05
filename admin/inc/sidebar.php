@@ -42,6 +42,15 @@
                         <li><a href="contactlist.php">Danh sách liên hệ</a> </li>
                     </ul>
                 </li>
+                <li>Thống kê sản phẩm
+                    <ul class=submenu>
+                        <li><a href="chartproduct.php">Tỉ lệ sản phẩm</a></li>
+                        <li><a href="priceproduct.php">Thống kê giá tiền sản phẩm</a></li>
+                        <li><a href="orderchart.php">Số lương Orders</a></li>
+                        
+                    </ul>
+
+                </li>
             </ul>
         </div>
     </div>
